@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author Jonas
  */
-class State {
+public class State {
     private String ID;//nome do estado
     //private boolean isFinal; // Define se é estado final ou não
     public ArrayList<Transition> transicao; // Transicoes possíveis a partir desse estado
@@ -42,6 +42,16 @@ class State {
     */
     public void addTransicao(Transition t){
         this.transicao.add(t);
+    }
+    
+    public void showTransitions(String sym){
+        Iterator itTrans = this.transicao.iterator();
+        while(itTrans.hasNext()){
+            Transition a = (Transition)itTrans.next();
+            if(a.getLetra() == sym)
+                System.out.print(a.getEstado().getID());           
+        }
+        System.out.print("\t");           
     }
     
 }

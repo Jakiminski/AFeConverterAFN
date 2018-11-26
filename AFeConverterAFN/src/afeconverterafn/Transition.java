@@ -5,7 +5,7 @@ package afeconverterafn;
  *
  * @author Jonas
  */
-class Transition {
+public class Transition {
    private String letra; // símbolo lido
    private State proximo; // estado seguinte
    
@@ -29,6 +29,5 @@ class Transition {
    public State getEstado(){
        return this.proximo;
    }
-   
-   
+      
 }
