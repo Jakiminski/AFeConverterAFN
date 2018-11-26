@@ -1,5 +1,6 @@
-
 package afeconverterafn;
+
+import java.util.StringTokenizer;
 
 /**
  *
@@ -9,10 +10,16 @@ public class Transition {
    private String letra; // símbolo lido
    private State proximo; // estado seguinte
    
-   Transition(String letra, State proximo){
+   public Transition(String letra, State proximo){
        this.letra = letra;
        this.proximo = proximo;
    }
+   
+  /* public Transition(String letra, State proximo){
+       this.letra = letra;
+       this.proximo = proximo;
+   }
+   */
    
    public void setLetra(String letra){
        this.letra = letra;

@@ -29,6 +29,12 @@ public class Automata {
         return null;
     }
     
+    public State getState(int index){
+        if(index < delta.size())
+            return delta.get(index);
+        return null;
+    }
+    
     public boolean isStateInsideDelta(String key){
         State temp = this.deltaFindState(key);
         return (temp == null) ? false : true; 
@@ -56,6 +62,14 @@ public class Automata {
             sigma.add(letra);
     }
     
+    public void addTransitionState(String key, afeconverterafn.Transition t){
+        for(State estado : delta){ 
+            if(estado.getID().equals(key))//Comparacao ID==key ?
+                estado.addTransicao(t); //Estado encontrado
+                
+        }
+    }
+    
     public void showAutomata(){
         Iterator itSigma = this.sigma.iterator();
         while(itSigma.hasNext()){
@@ -72,6 +86,26 @@ public class Automata {
             }
         }
         System.out.println();
+    }
+    
+    public Automata converter(){
+        Automata afn = new Automata();
+        afn.sigma = this.sigma;
+        afn.sigma.remove("ε");
+        
+        for(State s : delta){
+            if(s.getID().contains("f")){
+                afn.addStateFinal(s.convertState());
+            }
+            else{
+                if(s.getID().contains("0"))
+                    afn.addStateInicial(s.convertState());
+                else
+                    afn.addState(s.convertState());
+            }
+                
+        }
+        return afn;        
     }
     
     

@@ -74,15 +74,16 @@ public class AFeConverterAFN {
     }
    
    public static void main(String[] args) {
-        /*gui ui = new gui();    
-            ui.setVisible(true);
-       */
-        System.out.println("Nome do arquivo: ");
+        gui ui = new gui();    
+        ui.setVisible(true);
+       
+        /*System.out.println("Nome do arquivo: ");
         String filename = (new Scanner(System.in)).nextLine();
         
         Automata afe = getAutomataFile(filename);
         
         afe.showAutomata();
+        */
     }
 
 }
