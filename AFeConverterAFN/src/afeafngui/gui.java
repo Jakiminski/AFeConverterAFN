@@ -33,9 +33,10 @@ public class gui extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor de Automato");
@@ -65,13 +66,6 @@ public class gui extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jToggleButton1.setText("Converter");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,20 +83,35 @@ public class gui extends javax.swing.JFrame {
         jTable2.setEnabled(false);
         jScrollPane2.setViewportView(jTable2);
 
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Converter");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jToggleButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,33 +119,69 @@ public class gui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        jToggleButton1.setEnabled(false);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", null, null, null, null},
+                {"", null, null, null, null},
+                {"", null, null, null, null},
+                {"", null, null, null, null},
+                {"", null, null, null, null},
+                {"", null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "δ", "Símbolo 1", "Símbolo 2", "Símbolo 3", "ε"
+            }
+        ));
+        
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "δ", "Símbolo 1", "Símbolo 2", "Símbolo 3"
+            }
+        ));
+        jButton3.setEnabled(true);
+        jTable2.setEnabled(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jButton3.setEnabled(false);
         String ID;
         jTable1.validate();
         jTable1.updateUI();
-        
+
         for(int i = 0; i < 7; i++){
-            
+
             if(jTable1.getValueAt(i, 0) != null){
                 ID = (String)jTable1.getValueAt(i, 0);
                 if(!ID.isEmpty()){
-                    
+
                     if(ID.contains("0"))
-                        afe.addStateInicial(new State(ID));
+                    afe.addStateInicial(new State(ID));
                     else if(ID.contains("f") || ID.contains("F"))
-                        afe.addStateFinal(new State(ID));
+                    afe.addStateFinal(new State(ID));
                     else
-                        afe.addState(new State(ID));
+                    afe.addState(new State(ID));
                 }
             }
         }
@@ -153,21 +198,21 @@ public class gui extends javax.swing.JFrame {
                         }
                     }
                     if(jTable1.getValueAt(i, 2) != null){
-                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 2), ",");    
+                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 2), ",");
                         afe.addAlphabeto("b");
                         while(token.hasMoreTokens()){
                             afe.addTransitionState(ID, new Transition("b", afe.deltaFindState((String)token.nextToken())));
                         }
                     }
                     if(jTable1.getValueAt(i, 3) != null){
-                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 3), ",");    
+                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 3), ",");
                         afe.addAlphabeto("c");
                         while(token.hasMoreTokens()){
                             afe.addTransitionState(ID, new Transition("c", afe.deltaFindState((String)token.nextToken())));
                         }
                     }
                     if(jTable1.getValueAt(i, 4) != null){
-                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 4), ",");    
+                        StringTokenizer token = new StringTokenizer((String)jTable1.getValueAt(i, 4), ",");
                         afe.addAlphabeto("ε");
                         while(token.hasMoreTokens()){
                             afe.addTransitionState(ID, new Transition("ε", afe.deltaFindState((String)token.nextToken())));
@@ -175,7 +220,7 @@ public class gui extends javax.swing.JFrame {
                     }
                 }
             }
-        
+
             Automata afn = afe.converter();
             for(int ss = 0; ss < 7; ss++){
                 State n = afn.getState(ss);
@@ -185,12 +230,12 @@ public class gui extends javax.swing.JFrame {
                     jTable2.setValueAt(n.getTransitions("b"), ss, 2);
                     jTable2.setValueAt(n.getTransitions("c"), ss, 3);
                 }else
-                    break;
+                break;
             }
         }
         jTable2.setEnabled(true);
-        
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     /**
@@ -229,10 +274,11 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

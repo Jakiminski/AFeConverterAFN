@@ -70,24 +70,6 @@ public class Automata {
         }
     }
     
-    public void showAutomata(){
-        Iterator itSigma = this.sigma.iterator();
-        while(itSigma.hasNext()){
-            System.out.print("\t"+(String)itSigma.next());
-        }
-        Iterator itState = this.delta.iterator();
-        while(itState.hasNext()){
-            System.out.println();
-            State a = (State)itState.next();
-            System.out.print(a.getID() + "|\t");
-            itSigma = sigma.iterator();
-            while(itSigma.hasNext()){
-                a.showTransitions((String)itSigma.next());
-            }
-        }
-        System.out.println();
-    }
-    
     public Automata converter(){
         Automata afn = new Automata();
         afn.sigma = this.sigma;
@@ -95,16 +77,17 @@ public class Automata {
         
         for(State s : delta){
             if(s.getID().contains("f")){
-                afn.addStateFinal(s.convertState());
+                afn.addStateFinal(s.updateState(s.fechoVazio(), this));
             }
             else{
                 if(s.getID().contains("0"))
-                    afn.addStateInicial(s.convertState());
+                    afn.addStateInicial(s.updateState(s.fechoVazio(), this));
                 else
-                    afn.addState(s.convertState());
+                    afn.addState(s.updateState(s.fechoVazio(), this));
             }
-                
+            
         }
+        
         return afn;        
     }
     

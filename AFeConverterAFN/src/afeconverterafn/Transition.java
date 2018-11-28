@@ -36,5 +36,9 @@ public class Transition {
    public State getEstado(){
        return this.proximo;
    }
+   
+   public boolean isEmpty (){
+       return letra.equals("ε");
+   }
       
 }

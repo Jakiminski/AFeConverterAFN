@@ -32,17 +32,48 @@ public class State {
         return this.ID;
     }
     
-    
-    
-    /*
-    public boolean getFinal(){
-        return this.isFinal;
+    public String fechoVazio(){
+        String fecho = "";
+        for(Transition t : transicao){
+            if(t.isEmpty()){
+                fecho = (ID + "," + t.getEstado().getID());
+                fecho += ("," + t.getEstado().fechoVazio());
+            }
+        }
+        return fecho;
     }
-    */
+    
+    public State updateState(String fecho, Automata afx){
+        StringTokenizer token = new StringTokenizer(fecho, ",");
+        State stt = new State(ID);
+        
+        for(Transition t : transicao){
+            if(!t.isEmpty())
+                stt.addTransicao(t);
+        }
+        
+        while(token.hasMoreTokens()){
+            String str = (String)token.nextToken();
+            if(!str.isEmpty()){
+                State stado = afx.deltaFindState(str);
+                cloneTransition(stado);
+                ArrayList<Transition> newTrans = stado.getTransitionSet();
+                for(Transition t : newTrans){
+                    if(t.getEstado().getID().contains("f") && !ID.contains("f"))
+                        stt.setID(ID.concat("f"));
+                    
+                    stt.addTransicao(t);
+                }
+            }
+        }
+        
+        return stt;
+    }
+    
     public State convertState(){
         State a = new State(ID);
         for(Transition t : transicao){
-            if(t.getLetra().equals("ε"))
+            if(t.isEmpty())
                 for(Transition t1 : t.getEstado().transicao){
                     if(t1.getEstado().getID().contains("f") && !a.getID().contains("f"))
                         a.setID(a.getID().concat("f"));
@@ -57,8 +88,20 @@ public class State {
     }
     
     public void addTransicao(Transition t){
-        if(!this.transicao.contains(t))
+        if(t != null && !this.transicao.contains(t))
             this.transicao.add(t);
+    }
+    
+    public void cloneTransition(State next){
+        ArrayList <Transition> t1 = new ArrayList();
+        for(Transition t : transicao){
+            if(t.getEstado().getID().equals(ID)){
+                t1.add(new Transition(t.getLetra(), next));
+            }
+        }
+        for(Transition t : t1){
+                addTransicao(t);
+        }
     }
     
     public String getTransitions(String letra){
@@ -73,14 +116,8 @@ public class State {
         return a;
     }
     
-    public void showTransitions(String sym){
-        Iterator itTrans = this.transicao.iterator();
-        while(itTrans.hasNext()){
-            Transition a = (Transition)itTrans.next();
-            if(a.getLetra() == sym)
-                System.out.print(a.getEstado().getID());           
-        }
-        System.out.print("\t");           
+    public ArrayList<Transition> getTransitionSet(){
+        return transicao;
     }
     
 }
