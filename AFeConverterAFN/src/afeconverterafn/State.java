@@ -33,11 +33,10 @@ public class State {
     }
     
     public String fechoVazio(){
-        String fecho = "";
+        String fecho = (ID + ",");;
         for(Transition t : transicao){
             if(t.isEmpty()){
-                fecho = (ID + "," + t.getEstado().getID());
-                fecho += ("," + t.getEstado().fechoVazio());
+                fecho += (t.getEstado().fechoVazio() + ",");
             }
         }
         return fecho;
@@ -68,23 +67,6 @@ public class State {
         }
         
         return stt;
-    }
-    
-    public State convertState(){
-        State a = new State(ID);
-        for(Transition t : transicao){
-            if(t.isEmpty())
-                for(Transition t1 : t.getEstado().transicao){
-                    if(t1.getEstado().getID().contains("f") && !a.getID().contains("f"))
-                        a.setID(a.getID().concat("f"));
-                    
-                    a.addTransicao(t1);
-                }
-            else
-                a.addTransicao(t);
-        }
-              
-        return a;
     }
     
     public void addTransicao(Transition t){
