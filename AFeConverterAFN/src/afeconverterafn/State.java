@@ -32,11 +32,13 @@ public class State {
         return this.ID;
     }
     
-    public String fechoVazio(){
-        String fecho = (ID + ",");;
-        for(Transition t : transicao){
-            if(t.isEmpty()){
-                fecho += (t.getEstado().fechoVazio() + ",");
+    public String fechoVazio(String fecho){
+        if(!fecho.contains(ID)){
+            fecho += (ID + ",");
+            for(Transition t : transicao){
+                if(t.isEmpty()){
+                    fecho = (t.getEstado().fechoVazio(fecho) + ",");
+                }
             }
         }
         return fecho;

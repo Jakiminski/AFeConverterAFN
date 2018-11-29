@@ -146,7 +146,7 @@ public class gui extends javax.swing.JFrame {
         jButton3.setEnabled(true);
         jTable2.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+       
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jButton3.setEnabled(false);
         String ID;
@@ -154,7 +154,6 @@ public class gui extends javax.swing.JFrame {
         jTable1.updateUI();
 
         for(int i = 0; i < 7; i++){
-
             if(jTable1.getValueAt(i, 0) != null){
                 ID = (String)jTable1.getValueAt(i, 0);
                 if(!ID.isEmpty()){

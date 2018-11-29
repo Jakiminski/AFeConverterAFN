@@ -76,17 +76,18 @@ public class Automata {
         afn.sigma.remove("ε");
         
         for(State s : delta){
+            String fVazio = s.fechoVazio("");
             if(s.getID().contains("f")){
-                afn.addStateFinal(s.updateState(s.fechoVazio(), this));
+                afn.addStateFinal(s.updateState(s.fechoVazio(""), this));
             }
             else{
                 if(s.getID().contains("0"))
-                    afn.addStateInicial(s.updateState(s.fechoVazio(), this));
+                    afn.addStateInicial(s.updateState(s.fechoVazio(""), this));
                 else
-                    afn.addState(s.updateState(s.fechoVazio(), this));
+                    afn.addState(s.updateState(s.fechoVazio(""), this));
             }
-            
-        }
+            System.out.println(fVazio);
+        }   
         
         return afn;        
     }
