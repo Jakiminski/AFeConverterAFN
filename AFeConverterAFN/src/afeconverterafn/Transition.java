@@ -1,18 +1,25 @@
-
 package afeconverterafn;
+
+import java.util.StringTokenizer;
 
 /**
  *
  * @author Jonas
  */
-class Transition {
+public class Transition {
    private String letra; // símbolo lido
    private State proximo; // estado seguinte
    
-   Transition(String letra, State proximo){
+   public Transition(String letra, State proximo){
        this.letra = letra;
        this.proximo = proximo;
    }
+   
+  /* public Transition(String letra, State proximo){
+       this.letra = letra;
+       this.proximo = proximo;
+   }
+   */
    
    public void setLetra(String letra){
        this.letra = letra;
@@ -30,5 +37,8 @@ class Transition {
        return this.proximo;
    }
    
-   
+   public boolean isEmpty (){
+       return letra.equals("ε");
+   }
+      
 }
